@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+import 'firebase/auth';
 import 'firebase/firestore';
 
 const app = firebase.initializeApp({
@@ -10,6 +11,7 @@ const app = firebase.initializeApp({
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 });
 
-export const usersRef = db.collection('users');
+// export const usersRef = db.collection('users');
 
+export const auth = firebase.auth();
 export default app;
