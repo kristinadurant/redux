@@ -1,9 +1,15 @@
-import { EMAIL_CHANGED } from './types';
+import { EMAIL_CHANGED, PASSWORD_CHANGED } from './types';
 
 export const emailChanged = value => {
-
-    return {
+    return ({
         type: EMAIL_CHANGED,
         payload: value
-    }
-}
+    })
+};
+
+export const passwordChanged = value => {
+    return ({
+        type: PASSWORD_CHANGED,
+        payload: value
+    })
+};
