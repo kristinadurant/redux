@@ -5,13 +5,16 @@ import { emailChanged, passwordChanged, loginUser } from '../../redux/actions';
 import { Input } from '../../components';
 
 const Login = (props) => {
-    const { email, pass } = props;
+    const { email, pass, error } = props;
 
     const handleSubmit = e => {
         e.preventDefault();
         props.loginUser({ email, pass});
     }
 
+    const renderError = _ => {
+        if(error) return <p className='error'>{error}</p>
+    }
     return (
         <>
             <Link to='/'>Back</Link>
@@ -27,6 +30,7 @@ const Login = (props) => {
                     onChange={e => props.passwordChanged(e.target.value)}
                     value={pass}
                 />
+                {renderError()}
                 <button type='submit'>Login</button>
             </form>
         </>
@@ -35,7 +39,8 @@ const Login = (props) => {
 
 const mapStateToProps = state => ({
     email: state.auth.email,
-    pass: state.auth.pass
+    pass: state.auth.pass,
+    error: state.auth.error
 })
 
 const mapDispatchToProps = { emailChanged, passwordChanged, loginUser };
